@@ -61,7 +61,11 @@ class PermissionController extends Controller
 
             return redirect()->route('permissions.index')->with('success', 'Data berhasil disimpan');
         } catch (\Throwable $th) {
-            // dd($th);
+
+            DB::rollback();
+
+            $this->errorLog(\Route::getCurrentRoute()->getActionMethod(), get_class($this), $th->getMessage());
+
             return redirect()->route('permissions.index')->with('error', 'Terdapat eror server');
         }
     }
@@ -108,7 +112,11 @@ class PermissionController extends Controller
 
             return redirect()->route('permissions.index')->with('success', 'Data berhasil diubah');
         } catch (\Throwable $th) {
-            // dd($th);
+
+            DB::rollback();
+
+            $this->errorLog(\Route::getCurrentRoute()->getActionMethod(), get_class($this), $th->getMessage());
+
             return redirect()->route('permissions.index')->with('error', 'Terdapat eror server');
         }
     }
@@ -133,7 +141,11 @@ class PermissionController extends Controller
             return redirect()->route('permissions.index')->with('success', 'Data berhasil dihapus');
 
         } catch (\Throwable $th) {
-            // dd($th);
+
+            DB::rollback();
+
+            $this->errorLog(\Route::getCurrentRoute()->getActionMethod(), get_class($this), $th->getMessage());
+
             return redirect()->route('permissions.index')->with('error', 'Terdapat eror server');
         }
     }
