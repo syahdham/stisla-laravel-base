@@ -6,15 +6,6 @@
         <a href="{{ route('dashboard') }}">{{ substr(env('APP_NAME'), 0, 1) }}</a>
     </div>
     <ul class="sidebar-menu">
-        @can('master_management_access')
-            <li class="menu-header">Master</li>
-                @can('category_access')
-                    <x-side-nav-link name="Kategori" route="categories" icon="fa fa-th"/>
-                @endcan
-                @can('product_access')
-                    <x-side-nav-link name="Produk" route="products" icon="fas fa-warehouse"/>
-                @endcan
-        @endcan
         @can('system_management_access')
             <li class="menu-header">Sistem</li>
                 @can('role_access')
