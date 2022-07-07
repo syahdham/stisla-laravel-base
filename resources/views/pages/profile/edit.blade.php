@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="section">
-        <x-section-header title="Profile User"/>
+        <x-section-header title="Profile Pengguna"/>
 
         <div class="section-body">
             <x-alert/>
