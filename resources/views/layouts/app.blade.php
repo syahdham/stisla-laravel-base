@@ -16,9 +16,6 @@
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/components.css')}}">
 
-        <!-- Own CSS -->
-        <link rel="stylesheet" href="{{ asset('assets/css/loading.css')}}">
-
     </head>
 
     <body style="overflow: scroll">
@@ -34,11 +31,6 @@
 
                 <!-- Main Content -->
                 <div class="main-content">
-
-                    <div id="loading">
-                        <img id="loading-image" src="{{ asset('assets/spinner.gif') }}" alt="Loading..." />
-                    </div>
-
                     @yield('content')
                 </div>
                 <footer class="main-footer">
@@ -59,12 +51,6 @@
         <!-- Template JS File -->
         <script src="{{ asset('assets/js/scripts.js') }}"></script>
         <script src="{{ asset('assets/js/custom.js') }}"></script>
-
-        <script>
-            $(window).load(function() {
-                $('#loading').hide();
-            });
-        </script>
 
         @stack('scripts')
 
