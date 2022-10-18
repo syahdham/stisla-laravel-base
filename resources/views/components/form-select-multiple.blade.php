@@ -29,7 +29,7 @@
                 @foreach ($values as $value)
                     <option
                         value="{{ $value->id }}"
-                            @if($value->id == $select)
+                            @if($value->id == $selected)
                                 {{ 'selected' }}
                             @elseif(old($name))
                                 {{ 'selected' }}
