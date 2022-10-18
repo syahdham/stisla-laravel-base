@@ -12,8 +12,14 @@
                 @foreach ($values as $value)
                     <option
                         value="{{ $value->id }}"
-                    @foreach($selected as $select)
-                        {{ $value->id == $select->id ? 'selected' : old($name) ? 'selected' :  '' }}
+                        @foreach($selected as $select)
+                            @if($value->id == $select->id)
+                                {{ 'selected' }}
+                            @elseif(old($name))
+                                {{ 'selected' }}
+                            @else
+                                {{ '' }}
+                            @endif
                         @endforeach
                     >
                         {{ $value->name }}
@@ -22,7 +28,14 @@
             @else
                 @foreach ($values as $value)
                     <option
-                        value="{{ $value->id }}" {{ $value->id == $selected ? 'selected' : old($name) ? 'selected' :  '' }}>
+                        value="{{ $value->id }}"
+                            @if($value->id == $select)
+                                {{ 'selected' }}
+                            @elseif(old($name))
+                                {{ 'selected' }}
+                            @else
+                                {{ '' }}
+                            @endif>
                         {{ $value->name }}
                     </option>
                 @endforeach
