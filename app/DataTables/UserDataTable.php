@@ -18,6 +18,13 @@ class UserDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->filter(function ($query) {
+                if (request()->has('search.value')) {
+                    return $query->whereHas('roles', function ($query) {
+                        $query->whereRaw('LOWER(roles.name) like ?', ["%" . request('search')['value'] . "%"]);
+                    });
+                }
+            })
             ->addColumn('role', function ($data) {
                 return view('pages.user.column.role', compact('data'))->render();
             })
@@ -37,7 +44,7 @@ class UserDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->newQuery()->with('roles');
+        return $model->newQuery()->with('roles')->select('users.*');
     }
 
     /**
