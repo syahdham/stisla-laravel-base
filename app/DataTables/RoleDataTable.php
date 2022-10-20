@@ -18,6 +18,13 @@ class RoleDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->filter(function ($query) {
+                if (request()->has('search.value')) {
+                    return $query->whereHas('permissions', function ($query) {
+                        $query->whereRaw('LOWER(permissions.name) like ?', ["%" . request('search')['value'] . "%"]);
+                    });
+                }
+            })
             ->addColumn('permissions', function ($data) {
                 return view('pages.role.column.permissions', compact('data'))->render();
             })
@@ -37,7 +44,7 @@ class RoleDataTable extends DataTable
      */
     public function query(Role $model)
     {
-        return $model->newQuery()->with('permissions');
+        return $model->newQuery()->with('permissions')->select('roles.*');
     }
 
     /**
@@ -66,7 +73,7 @@ class RoleDataTable extends DataTable
         return [
             Column::make('name')->title('Nama')->width(100),
             Column::make('permissions')->title('Hak Akses')->width(100),
-            Column::make('action')
+            Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(50)
