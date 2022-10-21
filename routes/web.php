@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SetupAndConfiguration\AppearanceController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('login', 'auth.login')->name('login');
@@ -16,5 +17,13 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('roles', \App\Http\Controllers\RoleController::class);
         Route::resource('users', \App\Http\Controllers\UserController::class);
         Route::resource('permissions', \App\Http\Controllers\PermissionController::class);
+
+        // Setup & Configurations
+        Route::prefix('setup-and-configuration')->as('setup-config.')->group(function () {
+            Route::controller(AppearanceController::class)->prefix('appearance')->as('appearance.')->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::post('/', 'updateTheme');
+            });
+        });
     });
 });

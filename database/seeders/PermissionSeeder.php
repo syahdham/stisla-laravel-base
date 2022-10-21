@@ -70,5 +70,9 @@ class PermissionSeeder extends Seeder
             'name' => 'user_access',
         ]);
 
+        Permission::create([
+            'name' => 'appearance_access',
+        ]);
+
     }
 }
