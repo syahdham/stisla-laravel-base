@@ -1,10 +1,10 @@
 body.skin-reverse.sidebar-mini .main-sidebar:after {
-  background-color: #6777ef;
+  background-color: var(--primary);
 }
 body.skin-reverse.sidebar-mini .main-sidebar .sidebar-menu li.active > a {
   background-color: #fff;
   box-shadow: none;
-  color: #6777ef;
+  color: var(--primary);
 }
 body.skin-reverse.sidebar-mini .main-sidebar .sidebar-menu li.active ul.dropdown-menu li a,
 body.skin-reverse.sidebar-mini .main-sidebar .sidebar-menu li ul.dropdown-menu li a {
@@ -14,15 +14,15 @@ body.skin-reverse.sidebar-mini .main-sidebar .sidebar-menu li ul.dropdown-menu l
 body.skin-reverse.sidebar-mini .main-sidebar .sidebar-menu li.active ul.dropdown-menu li a:hover,
 body.skin-reverse.sidebar-mini .main-sidebar .sidebar-menu li ul.dropdown-menu li a:hover {
   background-color: #fcfcfd;
-  color: #191d21;
+  color: var(--dark);
 }
 body.skin-reverse.sidebar-mini .main-sidebar .sidebar-menu li.active ul.dropdown-menu li.active a,
 body.skin-reverse.sidebar-mini .main-sidebar .sidebar-menu li ul.dropdown-menu li.active a {
   background-color: transparent !important;
-  color: #6777ef;
+  color: var(--primary);
 }
 body.skin-reverse .main-sidebar {
-  background-color: #6777ef;
+  background-color: var(--primary);
 }
 body.skin-reverse .main-sidebar .sidebar-brand a {
   color: #fff;
@@ -46,7 +46,7 @@ body.skin-reverse .main-sidebar .sidebar-menu li ul.dropdown-menu li a {
   color: #dadefb;
 }
 body.skin-reverse .main-sidebar .sidebar-menu li ul.dropdown-menu li a:hover {
-  background-color: #6777ef;
+  background-color: var(--primary);
   color: #fff;
 }
 body.skin-reverse .main-sidebar .sidebar-menu li ul.dropdown-menu li.active a {
